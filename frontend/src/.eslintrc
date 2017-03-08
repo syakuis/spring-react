@@ -1,0 +1,13 @@
+{
+  "extends": "airbnb",
+  "env": { "browser": true },
+  "settings": {
+    "import/resolver": "webpack"
+  },
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx"] }
+    ]
+  }
+}
