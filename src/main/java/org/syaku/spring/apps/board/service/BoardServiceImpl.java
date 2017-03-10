@@ -1,11 +1,16 @@
 package org.syaku.spring.apps.board.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.syaku.spring.apps.board.dao.BoardDAO;
 import org.syaku.spring.apps.board.domain.Board;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author Seok Kyun. Choi. 최석균 (Syaku)
@@ -18,12 +23,19 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	@Transactional(readOnly = true)
+	public Page<Board> getBoardList(int startPage, int endPage) {
+		return boardDAO.findAll(new PageRequest(startPage, endPage));
+	}
+
+	@Override
+	@Transactional(readOnly = true)
 	public Board getBoardObject(String boardIdx) {
 		return boardDAO.getOne(boardIdx);
 	}
 
 	@Override
 	public void saveBoard(Board board) {
+		board.setRegDate(new Date());
 		boardDAO.save(board);
 	}
 

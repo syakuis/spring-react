@@ -58,18 +58,26 @@ module.exports = {
         include: path.resolve(__dirname, 'src'),
         loader: 'babel-loader',
         query: {
-          presets: [ 'react', ['es2015', {'loose': true}] ]
+          presets: [ 'react', ['es2015', {'loose': true}], 'stage-3' ]
         }
       }
     ]
   },
   resolve: {
     alias: {
-      '_components': path.resolve(__dirname, 'src/components/')
+      '_components': path.resolve(__dirname, 'src/components/'),
+      '_services': path.resolve(__dirname, 'src/services/')
     }
   },
 
   devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        secure: false,
+        prependPath: true // target 에 경로를 사용한다.
+      }
+    },
     historyApiFallback: true,
     inline: true,
     hot: true,

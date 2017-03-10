@@ -1,6 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 
+const propTypes = {
+  boardList: PropTypes.array,
+};
+
+const defaultProps = {
+  boardList: [],
+};
+
 class BasicList extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <table className="table table-hover">
@@ -23,21 +35,25 @@ class BasicList extends Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="text-center">1</td>
-            <td>good</td>
-            <td>good</td>
-            <td>good</td>
-            <td>good</td>
-          </tr>
+          {
+            this.props.boardList.map(board => (
+              <tr>
+                <td className="text-center">1</td>
+                <td>{board.subject}</td>
+                <td>{board.userName}</td>
+                <td>1</td>
+                <td>{board.regDate}</td>
+              </tr>
+            ))
+          }
         </tbody>
       </table>
     );
   }
 }
 
-BasicList.propTypes = {
+BasicList.propTypes = propTypes;
 
-};
+BasicList.defaultProps = defaultProps;
 
 export default BasicList;

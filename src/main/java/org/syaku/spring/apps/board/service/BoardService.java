@@ -1,6 +1,9 @@
 package org.syaku.spring.apps.board.service;
 
+import org.springframework.data.domain.Page;
 import org.syaku.spring.apps.board.domain.Board;
+
+import java.util.List;
 
 /**
  * @author Seok Kyun. Choi. 최석균 (Syaku)
@@ -8,6 +11,7 @@ import org.syaku.spring.apps.board.domain.Board;
  * @since 2017. 3. 8.
  */
 public interface BoardService {
+	Page<Board> getBoardList(int startPage, int endPage);
 	Board getBoardObject(String boardIdx);
 	void saveBoard(Board board);
 }
