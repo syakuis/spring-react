@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 import BoardService from '_services/BoardService';
 
@@ -10,7 +10,8 @@ class BoardListContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.handlerPageChange = this.handlerPageChange.bind(this);
+    this.boardView = this.boardView.bind(this);
+    this.pageChange = this.pageChange.bind(this);
 
     this.http = new BoardService();
 
@@ -22,24 +23,34 @@ class BoardListContainer extends Component {
   }
 
   componentWillMount() {
-    this.handlerPageChange(PagiNation.getPage(this.state.page));
+    this.pageChange(PagiNation.getPage(this.state.page));
   }
 
-  handlerPageChange(page, limit) {
+  boardView(boardIdx) {
+    console.log(boardIdx, this.props);
+    browserHistory.push(`/${boardIdx}`);
+  }
+
+  pageChange(page, limit) {
     this.http.getBoardList(page, limit).then((res) => {
       this.setState({ page, boardList: res.data.content, totalRow: res.data.totalElements });
     });
+
+    PagiNation.updateBrowserHistory(page, browserHistory);
   }
 
   render() {
     return (
       <div>
-        <BasicList boardList={this.state.boardList} />
+        <BasicList
+          boardList={this.state.boardList}
+          onBoardView={this.boardView}
+        />
         <PagiNation
           className="text-center"
           page={this.state.page}
           totalRow={this.state.totalRow}
-          onPageChange={this.handlerPageChange}
+          onPageChange={this.pageChange}
         />
         <Link to="/post">
           게시판쓰기.

@@ -1,9 +1,10 @@
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 import BasicPost from '_components/BasicPost';
 import BoardService from '_services/BoardService';
 
-class BoardPostContainer extends React.Component {
+class BoardPostContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -12,7 +13,9 @@ class BoardPostContainer extends React.Component {
   }
 
   saveBoard(data) {
-    this.service.saveBoard(data);
+    this.service.saveBoard(data).then(() => {
+      browserHistory.push('/');
+    });
   }
 
   render() {

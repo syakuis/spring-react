@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 const propTypes = {
   boardList: PropTypes.array,
+  onBoardView: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -11,6 +12,13 @@ const defaultProps = {
 class BasicList extends Component {
   constructor(props) {
     super(props);
+
+    this.handlerBoardView = this.handlerBoardView.bind(this);
+  }
+
+  handlerBoardView(e, boardIdx) {
+    e.preventDefault();
+    this.props.onBoardView(boardIdx);
   }
 
   render() {
@@ -39,7 +47,7 @@ class BasicList extends Component {
             this.props.boardList.map(board => (
               <tr key={board.boardIdx}>
                 <td className="text-center">1</td>
-                <td>{board.subject}</td>
+                <td><a href="" onClick={e => this.handlerBoardView(e, board.boardIdx)}>{board.subject}</a></td>
                 <td>{board.userName}</td>
                 <td>1</td>
                 <td>{board.regDate}</td>

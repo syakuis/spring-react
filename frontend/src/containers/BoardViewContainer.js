@@ -3,9 +3,15 @@ import { Link } from 'react-router';
 
 import BoardService from '_services/BoardService';
 
-import BasicList from '_components/BasicList';
+import BasicView from '_components/BasicView';
 
-class BoardListContainer extends React.Component {
+const propTypes = {
+  params: PropTypes.shape({
+    boardIdx: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+class BoardViewContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -17,15 +23,15 @@ class BoardListContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.http.getBoardView().then((res) => {
-      this.setState({ boardList: res.data });
+    this.http.getBoardObject(this.props.params.boardIdx).then((res) => {
+      this.setState({ board: res.data });
     });
   }
 
   render() {
     return (
       <div>
-        <BasicList boardList={this.state.boardList} />
+        <BasicView board={this.state.board} />
         <Link to="/post">
           게시판쓰기.
         </Link>
@@ -34,4 +40,6 @@ class BoardListContainer extends React.Component {
   }
 }
 
-export default BoardListContainer;
+BoardViewContainer.propTypes = propTypes;
+
+export default BoardViewContainer;

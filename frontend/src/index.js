@@ -8,6 +8,7 @@ import 'font-awesome/css/font-awesome.css';
 import BoardContainer from './containers/BoardContainer';
 import BoardListContainer from './containers/BoardListContainer';
 import BoardPostContainer from './containers/BoardPostContainer';
+import BoardViewContainer from './containers/BoardViewContainer';
 
 class App {
   static main() {
@@ -16,6 +17,7 @@ class App {
         <Route path="/" component={BoardContainer}>
           <IndexRoute component={BoardListContainer} />
           <Route path="post" component={BoardPostContainer} />
+          <Route path=":boardIdx" component={BoardViewContainer} />
         </Route>
       </Router>
       ,

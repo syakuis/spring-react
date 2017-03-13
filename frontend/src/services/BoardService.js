@@ -54,6 +54,10 @@ export default class BoardService {
     });
   }
 
+  getBoardObject(boardIdx) {
+    return this.http.get(`/board/${boardIdx}`);
+  }
+
   saveBoard(data) {
     return this.http.post('/board', data);
   }

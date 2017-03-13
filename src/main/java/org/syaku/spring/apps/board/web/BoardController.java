@@ -1,5 +1,7 @@
 package org.syaku.spring.apps.board.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/api/board")
 public class BoardController {
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
 	@Resource(name = "boardServiceImpl") private BoardService boardService;
 
@@ -30,6 +33,7 @@ public class BoardController {
 
 	@GetMapping("/{boardIdx}")
 	public @ResponseBody Board getBoardObject(@PathVariable("boardIdx") String boardIdx) {
+		logger.debug(boardIdx);
 		return boardService.getBoardObject(boardIdx);
 	}
 

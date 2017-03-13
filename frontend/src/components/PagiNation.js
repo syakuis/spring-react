@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import qs from 'qs';
-import { browserHistory } from 'react-router';
 
 const propTypes = {
   page: PropTypes.number,
@@ -25,13 +24,20 @@ class PagiNation extends Component {
 
   static getPage(page) {
     if (location.search) {
-      const params = qs.parse(location.search);
+      const params = qs.parse(location.search.substring(1));
       if (params.page > 0) {
         return parseInt(params.page, 0);
       }
     }
 
     return page;
+  }
+
+
+  static updateBrowserHistory(page, browserHistory) {
+    const params = qs.parse(location.search.substring(1));
+    params.page = page;
+    browserHistory.push(`?${qs.stringify(params)}`);
   }
 
   constructor(props) {
@@ -98,9 +104,6 @@ class PagiNation extends Component {
   }
 
   handlerPageChange(page, rowCount) {
-    const params = qs.parse(location.search.substring(1));
-    params.page = page;
-    browserHistory.push(`?${qs.stringify(params)}`);
     this.props.onPageChange(page, rowCount);
   }
 
