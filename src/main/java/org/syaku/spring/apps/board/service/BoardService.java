@@ -11,7 +11,7 @@ import java.util.List;
  * @since 2017. 3. 8.
  */
 public interface BoardService {
-	Page<Board> getBoardList(int startPage, int endPage);
+	Page<Board> getBoardList(int page, int limit);
 	Board getBoardObject(String boardIdx);
 	void saveBoard(Board board);
 }

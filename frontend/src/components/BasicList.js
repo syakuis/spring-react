@@ -37,7 +37,7 @@ class BasicList extends Component {
         <tbody>
           {
             this.props.boardList.map(board => (
-              <tr>
+              <tr key={board.boardIdx}>
                 <td className="text-center">1</td>
                 <td>{board.subject}</td>
                 <td>{board.userName}</td>

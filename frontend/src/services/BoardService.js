@@ -7,6 +7,9 @@ let count = 0;
 
 export default class BoardService {
   constructor() {
+    this.page = 0;
+    this.limit = 10;
+
     this.http = axios.create({
       baseURL: '/api',
       headers: { 'X-Requested-With': 'XMLHttpRequest' },
@@ -30,8 +33,25 @@ export default class BoardService {
     });
   }
 
-  getBoardList() {
-    return this.http.get('/board');
+  getBoardPage(page, limit) {
+    if (page > 0) {
+      this.page = page - 1 || 0;
+    }
+
+    if (limit > 0) {
+      this.limit = limit || 10;
+    }
+
+    return {
+      page: this.page,
+      limit: this.limit,
+    };
+  }
+
+  getBoardList(page, limit) {
+    return this.http.get('/board', {
+      params: this.getBoardPage(page, limit),
+    });
   }
 
   saveBoard(data) {

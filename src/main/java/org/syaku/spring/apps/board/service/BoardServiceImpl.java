@@ -23,8 +23,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Page<Board> getBoardList(int startPage, int endPage) {
-		return boardDAO.findAll(new PageRequest(startPage, endPage));
+	public Page<Board> getBoardList(int page, int limit) {
+		return boardDAO.findAll(new PageRequest(page, limit));
 	}
 
 	@Override

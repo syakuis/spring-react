@@ -22,10 +22,10 @@ public class BoardController {
 
 	@GetMapping("")
 	public @ResponseBody Page<Board> getBoardList(
-			@RequestParam(name = "startPage", defaultValue = "1") int statePage,
-			@RequestParam(name = "endPage", defaultValue = "10") int endPage
+			@RequestParam(name = "page", defaultValue = "1") int page,
+			@RequestParam(name = "limit", defaultValue = "10") int limit
 			) {
-		return boardService.getBoardList(statePage, endPage);
+		return boardService.getBoardList(page, limit);
 	}
 
 	@GetMapping("/{boardIdx}")
