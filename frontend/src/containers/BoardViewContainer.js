@@ -17,8 +17,7 @@ class BoardViewContainer extends React.Component {
     super(props);
 
     this.boardService = new BoardService();
-
-    this.deleteBaord = this.deleteBoard.bind(this);
+    this.deleteBoard = this.deleteBoard.bind(this);
 
     this.state = {
       board: {},
@@ -31,9 +30,8 @@ class BoardViewContainer extends React.Component {
     });
   }
 
-  deleteBoard(e) {
-    console.log(e);
-    this.boardService.deleteBaord(this.state.board.boardIdx).then(() => {
+  deleteBoard() {
+    this.boardService.deleteBoard(this.state.board.boardIdx).then(() => {
       browserHistory.push('/');
     });
   }
