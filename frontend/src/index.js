@@ -16,7 +16,7 @@ class App {
       <Router history={browserHistory}>
         <Route path="/" component={BoardContainer}>
           <IndexRoute component={BoardListContainer} />
-          <Route path="post" component={BoardPostContainer} />
+          <Route path="post(/:boardIdx)" component={BoardPostContainer} />
           <Route path=":boardIdx" component={BoardViewContainer} />
         </Route>
       </Router>

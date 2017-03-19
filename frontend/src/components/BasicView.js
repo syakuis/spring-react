@@ -3,11 +3,20 @@ import React, { Component, PropTypes } from 'react';
 const propTypes = {
   board: PropTypes.shape({
     boardIdx: PropTypes.string.isRequired,
-    subject: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired,
-    regDate: PropTypes.string.isRequired,
-  }).isRequired,
+    subject: PropTypes.string,
+    content: PropTypes.string,
+    userName: PropTypes.string,
+    regDate: PropTypes.number,
+  }),
+};
+
+const defaultProps = {
+  board: {
+    subject: null,
+    content: null,
+    userName: null,
+    regDate: null,
+  },
 };
 
 class BasicView extends Component {
@@ -33,5 +42,6 @@ class BasicView extends Component {
 }
 
 BasicView.propTypes = propTypes;
+BasicView.defaultProps = defaultProps;
 
 export default BasicView;

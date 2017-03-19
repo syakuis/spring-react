@@ -2,8 +2,17 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 const propTypes = {
-  boardIdx: PropTypes.string,
+  board: PropTypes.object,
   saveBoard: PropTypes.func.isRequired,
+};
+
+const defaultProps = {
+  board: {
+    boardIdx: null,
+    subject: null,
+    content: null,
+    userName: null,
+  },
 };
 
 class BasicPost extends Component {
@@ -11,15 +20,13 @@ class BasicPost extends Component {
     super(props);
 
     this.save = this.save.bind(this);
-
-    this.state = {
-      boardIdx: this.props.boardIdx,
-      subject: '',
-      content: '',
-      userName: '',
-    };
-
     this.handlerSwitch = this.handlerSwitch.bind(this);
+
+    this.state = props.board;
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState(props.board);
   }
 
   save(e) {
@@ -93,8 +100,6 @@ class BasicPost extends Component {
 
 BasicPost.propTypes = propTypes;
 
-BasicPost.defaultProps = {
-  boardIdx: null,
-};
+BasicPost.defaultProps = defaultProps;
 
 export default BasicPost;

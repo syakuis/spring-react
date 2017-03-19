@@ -12,10 +12,10 @@ import java.util.Date;
  * @site http://syaku.tistory.com
  * @since 2017. 3. 8.
  */
+@Data
 @Entity
 @Table(name = "BOARD")
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
 public class Board {
 
 	@Column(name = "board_idx")
@@ -31,6 +31,8 @@ public class Board {
 		})
 	private String boardIdx;
 	private String subject;
+	@Column(name = "user_name")
+	private String userName;
 	private String content;
 	@Column(name = "readed_count")
 	private Long readedCount;

@@ -19,6 +19,8 @@ class BoardListContainer extends Component {
       page: 1,
       boardList: [],
       totalRow: 0,
+      pageCount: 10,
+      rowCount: 10,
     };
   }
 
@@ -27,8 +29,7 @@ class BoardListContainer extends Component {
   }
 
   boardView(boardIdx) {
-    console.log(boardIdx, this.props);
-    browserHistory.push(`/${boardIdx}`);
+    browserHistory.push({ pathname: `/${boardIdx}`, search: location.search });
   }
 
   pageChange(page, limit) {
@@ -45,15 +46,21 @@ class BoardListContainer extends Component {
         <BasicList
           boardList={this.state.boardList}
           onBoardView={this.boardView}
+          page={this.state.page}
+          totalRow={this.state.totalRow}
+          pageCount={this.state.pageCount}
+          rowCount={this.state.rowCount}
         />
         <PagiNation
           className="text-center"
           page={this.state.page}
           totalRow={this.state.totalRow}
+          pageCount={this.state.pageCount}
+          rowCount={this.state.rowCount}
           onPageChange={this.pageChange}
         />
-        <Link to="/post">
-          게시판쓰기.
+        <Link className="btn btn-default btn-sm" to="/post">
+          <i className="fa fa-bars" /> 등록
         </Link>
       </div>
     );

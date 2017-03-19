@@ -62,7 +62,7 @@ class PagiNation extends Component {
 
     let endPage = startPage + (this.props.pageCount - 1);
     if (endPage > totalPage) {
-      endPage = totalPage;
+      endPage = totalPage || 1;
     }
     const isBtnLast = endPage > this.props.page;
 
@@ -73,8 +73,10 @@ class PagiNation extends Component {
     const isBtnNext = nextPage < totalPage && totalPage > 1;
     const prevPage = startPage - 1;
     const isBtnPrev = prevPage > 1;
-/*
-    console.warn({
+
+    const virtualSeq = this.props.totalRow - (this.props.rowCount * (this.props.page - 1));
+
+    console.debug({
       page: this.props.page,
       totalRow: this.props.totalRow,
       totalPage,
@@ -82,12 +84,15 @@ class PagiNation extends Component {
       endPage,
       pageItems,
       nowPageGroup,
+      nextPage,
+      prevPage,
       isBtnFirst,
       isBtnLast,
       isBtnNext,
       isBtnPrev,
+      virtualSeq,
     });
-*/
+
     return {
       totalPage,
       startPage,
@@ -100,6 +105,7 @@ class PagiNation extends Component {
       isBtnLast,
       isBtnNext,
       isBtnPrev,
+      virtualSeq,
     };
   }
 

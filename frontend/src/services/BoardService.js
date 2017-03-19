@@ -61,4 +61,8 @@ export default class BoardService {
   saveBoard(data) {
     return this.http.post('/board', data);
   }
+
+  deleteBoard(boardIdx) {
+    return this.http.delete(`/board/${boardIdx}`);
+  }
 }

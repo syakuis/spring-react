@@ -39,4 +39,8 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.save(board);
 	}
 
+	@Override
+	public void deleteBoard(String boardIdx) {
+		boardDAO.delete(boardIdx);
+	}
 }

@@ -5,15 +5,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const pkg = require('./package.json')
 
-process.traceDeprecation = true
-
 module.exports = {
   entry: './src/index.js',
 
   output: {
     path: 'dist',
-    publicPath: '',
-    filename: '[name].js',
+    publicPath: '/',
+    filename: '[name].js'
   },
 
   plugins: [

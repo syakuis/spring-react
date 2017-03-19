@@ -14,4 +14,5 @@ public interface BoardService {
 	Page<Board> getBoardList(int page, int limit);
 	Board getBoardObject(String boardIdx);
 	void saveBoard(Board board);
+	void deleteBoard(String boardIdx);
 }

@@ -3,6 +3,9 @@ import React, { Component, PropTypes } from 'react';
 const propTypes = {
   boardList: PropTypes.array,
   onBoardView: PropTypes.func.isRequired,
+  totalRow: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
+  rowCount: PropTypes.number.isRequired,
 };
 
 const defaultProps = {
@@ -22,6 +25,7 @@ class BasicList extends Component {
   }
 
   render() {
+    const virtualSeq = this.props.totalRow - (this.props.rowCount * (this.props.page - 1));
     return (
       <table className="table table-hover">
         <colgroup>
@@ -44,12 +48,16 @@ class BasicList extends Component {
         </thead>
         <tbody>
           {
-            this.props.boardList.map(board => (
+            this.props.boardList.map((board, i) => (
               <tr key={board.boardIdx}>
-                <td className="text-center">1</td>
-                <td><a href="" onClick={e => this.handlerBoardView(e, board.boardIdx)}>{board.subject}</a></td>
+                <td className="text-center">{virtualSeq - i}</td>
+                <td>
+                  <a
+                    href=""
+                    onClick={e => this.handlerBoardView(e, board.boardIdx)}
+                  >{board.subject}</a></td>
                 <td>{board.userName}</td>
-                <td>1</td>
+                <td>-</td>
                 <td>{board.regDate}</td>
               </tr>
             ))
