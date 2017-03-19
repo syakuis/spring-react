@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link, browserHistory } from 'react-router';
 
 import BoardService from '_services/BoardService';
 
 import BasicList from '_components/BasicList';
 import PagiNation from '_components/PagiNation';
+
+const propTypes = {
+  location: PropTypes.object.isRequired,
+};
 
 class BoardListContainer extends Component {
   constructor(props) {
@@ -29,7 +33,7 @@ class BoardListContainer extends Component {
   }
 
   boardView(boardIdx) {
-    browserHistory.push({ pathname: `/${boardIdx}`, search: location.search });
+    browserHistory.push({ pathname: `/${boardIdx}`, query: this.props.location.query });
   }
 
   pageChange(page, limit) {
@@ -66,5 +70,7 @@ class BoardListContainer extends Component {
     );
   }
 }
+
+BoardListContainer.propTypes = propTypes;
 
 export default BoardListContainer;
