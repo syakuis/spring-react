@@ -55,7 +55,7 @@ export default class BoardService {
   }
 
   getBoardObject(boardIdx) {
-    return this.http.get(`/board/${boardIdx}`);
+   // return this.http.get(`/board/${boardIdx}`);
   }
 
   saveBoard(data) {

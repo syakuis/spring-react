@@ -1,4 +1,4 @@
-package org.syaku.spring.config.context;
+package org.syaku.spring.boot.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

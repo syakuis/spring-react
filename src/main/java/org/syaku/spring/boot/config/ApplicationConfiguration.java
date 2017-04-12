@@ -1,4 +1,4 @@
-package org.syaku.spring.config.context;
+package org.syaku.spring.boot.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

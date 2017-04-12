@@ -1,4 +1,4 @@
-package org.syaku.spring.jpa;
+package org.syaku.spring.support.jpa;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.HibernateException;

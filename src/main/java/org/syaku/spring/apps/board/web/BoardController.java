@@ -2,6 +2,7 @@ package org.syaku.spring.apps.board.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,9 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.syaku.spring.apps.board.domain.Board;
 import org.syaku.spring.apps.board.service.BoardService;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author Seok Kyun. Choi. 최석균 (Syaku)
@@ -23,7 +21,8 @@ import java.util.List;
 public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
-	@Resource(name = "boardServiceImpl") private BoardService boardService;
+	@Autowired
+	private BoardService boardService;
 
 	@GetMapping("")
 	public @ResponseBody Page<Board> getBoardList(

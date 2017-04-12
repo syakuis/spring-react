@@ -1,4 +1,4 @@
-package org.syaku.spring.config;
+package org.syaku.spring.boot;
 
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,7 @@ import java.util.Properties;
  */
 @Configuration
 @ComponentScan(
-		basePackages = "org.syaku.spring.config.context",
+		basePackages = "org.syaku.spring.boot.config",
 		useDefaultFilters = false,
 		includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
 )
@@ -34,6 +34,4 @@ public class SpringBootstrap {
 		config = propertiesFactoryBean.getObject();
 		return config;
 	}
-
-
 }

@@ -23,7 +23,7 @@ public class Board {
 	@GeneratedValue(generator = "IdGenerator")
 	@GenericGenerator(
 		name = "IdGenerator",
-		strategy = "org.syaku.spring.jpa.IdGenerator",
+		strategy = "org.syaku.spring.support.jpa.IdGenerator",
 		parameters = {
 				@org.hibernate.annotations.Parameter(name = "sequenceName", value = "BOARD_IDX_SEQ"),
 				@org.hibernate.annotations.Parameter(name = "prefix", value = "B"),

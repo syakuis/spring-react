@@ -1,4 +1,4 @@
-package org.syaku.spring.config.context;
+package org.syaku.spring.boot.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;

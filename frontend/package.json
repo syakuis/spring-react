@@ -9,9 +9,10 @@
     "url": "https://github.com/syakuis/spring-react.git"
   },
   "scripts": {
-    "dev": "webpack --colors --progress -d",
-    "prod": "webpack --colors --progress -p",
-    "serv": "webpack-dev-server"
+    "build:dev": "webpack --colors --progress -d",
+    "build:prod": "webpack --colors --progress -p",
+    "serv:dev": "webpack-dev-server --colors --progress -d",
+    "serv:prod": "webpack-dev-server --colors --progress -p --compress"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",

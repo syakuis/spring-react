@@ -1,4 +1,4 @@
-package org.syaku.spring.apps.board.domain;
+package org.syaku.spring.apps.board.service.enums;
 
 /**
  * @author Seok Kyun. Choi. 최석균 (Syaku)
