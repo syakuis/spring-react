@@ -32,6 +32,7 @@ public class SpringBootstrap {
 		propertiesFactoryBean.setLocation(pathMatchingResourcePatternResolver.getResource("classpath:config.properties"));
 		propertiesFactoryBean.afterPropertiesSet();
 		config = propertiesFactoryBean.getObject();
+
 		return config;
 	}
 }

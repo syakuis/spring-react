@@ -1,6 +1,7 @@
 package org.syaku.spring.apps.board.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -22,7 +23,8 @@ import java.util.List;
 @Service
 @Transactional
 public class BoardService {
-	@Autowired private BoardDAO boardDAO;
+	@Autowired
+	private BoardDAO boardDAO;
 
 	@Transactional(readOnly = true)
 	public Page<Board> getBoardList(int page, int limit) {
